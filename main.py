@@ -24,6 +24,16 @@ class Cave:
             cave[i] = list(connections)
         return cave
 
+    def display_status(self):
+        print(f"You are in room {self.player}")
+        print(f"Tunnels lead to: {self.rooms[self.player]}")
+        if any(adj in self.pits for adj in self.rooms[self.player]):
+            print("You feel a draft.")
+        if any(adj in self.bats for adj in self.rooms[self.player]):
+            print("You hear flapping.")
+        if any(adj == self.wumpus for adj in self.rooms[self.player]):
+            print("You smell a Wumpus!")
+
     def check_hazards(self):
         if self.player == self.wumpus:
             print("You were eaten by the Wumpus!")
