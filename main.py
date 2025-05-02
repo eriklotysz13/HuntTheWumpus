@@ -8,7 +8,9 @@ class Cave:
         self.pits = random.sample([i for i in range(20) if i != self.wumpus], 2)
         self.bats = random.sample([i for i in range(20) if i not in self.pits and i != self.wumpus], 2)
         self.player = random.choice([i for i in range(20) if i not in self.pits and i != self.wumpus])
+        self.arrow = 1
         self.alive = True
+        self.won = False
 
     def generate_cave(self):
         # Each room has 3 unique connections
@@ -55,4 +57,3 @@ class Cave:
                 print("Arrow hit a wall and broke.")
                 return
         print("You missed!")
-        
