@@ -33,3 +33,10 @@ class Cave:
             print("Bats carried you to another room!")
             self.player = random.choice([i for i in range(20) if i != self.player])
             self.check_hazards()
+
+    def move(self, room):
+        if room not in self.rooms[self.player]:
+            print("Invalid move. Try again.")
+            return
+        self.player = room
+        self.check_hazards()
