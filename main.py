@@ -40,3 +40,19 @@ class Cave:
             return
         self.player = room
         self.check_hazards()
+    
+    def shoot(self, path):
+        if self.arrow == 0:
+            print("You have no arrows!")
+            return
+        self.arrow -= 1
+        for room in path:
+            if room == self.wumpus:
+                print("You hear a scream! You killed the Wumpus!")
+                self.won = True
+                return
+            if room not in self.rooms.get(self.player, []):
+                print("Arrow hit a wall and broke.")
+                return
+        print("You missed!")
+        
