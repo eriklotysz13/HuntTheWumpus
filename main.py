@@ -67,3 +67,34 @@ class Cave:
                 print("Arrow hit a wall and broke.")
                 return
         print("You missed!")
+    
+    def play_turn(self):
+        self.display_status()
+        action = input("Move or Shoot? (m/s): ").strip().lower()
+        if action == 'm':
+            try:
+                dest = int(input("Enter room to move into: "))
+                self.move(dest)
+            except ValueError:
+                print("Invalid room number.")
+        elif action == 's':
+            try:
+                path = list(map(int, input("Enter up to 3 rooms (space-separated): ").split()))
+                if len(path) > 3:
+                    print("Too many rooms.")
+                    return
+                self.shoot(path)
+            except ValueError:
+                print("Invalid input.")
+
+def main():
+    cave = Cave()
+    while cave.alive and not cave.won:
+        cave.play_turn()
+    if cave.won:
+        print("Congratulations, you win!")
+    else:
+        print("Game over.")
+
+if __name__ == "__main__":
+    main()
