@@ -11,7 +11,7 @@ class Cave:
         self.arrow = 1
         self.alive = True
         self.won = False
-    
+
     def generate_cave(self):
         # Each room has 3 unique connections
         cave = {}
@@ -23,7 +23,7 @@ class Cave:
                     connections.add(room)
             cave[i] = list(connections)
         return cave
-    
+
     def display_status(self):
         print(f"You are in room {self.player}")
         print(f"Tunnels lead to: {self.rooms[self.player]}")
@@ -33,7 +33,7 @@ class Cave:
             print("You hear flapping.")
         if any(adj == self.wumpus for adj in self.rooms[self.player]):
             print("You smell a Wumpus!")
-    
+
     def check_hazards(self):
         if self.player == self.wumpus:
             print("You were eaten by the Wumpus!")
@@ -45,14 +45,14 @@ class Cave:
             print("Bats carried you to another room!")
             self.player = random.choice([i for i in range(20) if i != self.player])
             self.check_hazards()
-    
+
     def move(self, room):
         if room not in self.rooms[self.player]:
             print("Invalid move. Try again.")
             return
         self.player = room
         self.check_hazards()
-    
+
     def shoot(self, path):
         if self.arrow == 0:
             print("You have no arrows!")
@@ -67,7 +67,7 @@ class Cave:
                 print("Arrow hit a wall and broke.")
                 return
         print("You missed!")
-    
+
     def play_turn(self):
         self.display_status()
         action = input("Move or Shoot? (m/s): ").strip().lower()
