@@ -4,7 +4,7 @@ This is a simple Python version of the classic text-based game Hunt the Wumpus b
 
 ---
 
-## 📂 File Structure
+## File Structure
 
 ```
 HuntTheWumpus/
