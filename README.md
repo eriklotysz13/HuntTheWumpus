@@ -15,7 +15,7 @@ HuntTheWumpus/
 ├── .flake8                # Linter config
 └── .github/workflows/
     ├── tests.yml          # CI for testing
-    └── lint.yml           # CI for linting
+    └── flake8.yml           # CI for linting
 ```
 
 ---
